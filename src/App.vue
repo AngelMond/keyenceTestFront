@@ -10,6 +10,6 @@ import Footer from './views/Footer.vue';
   <Footer></Footer>
 </template>
 
-<style scoped>
-@import './assets/main.css'
+<style lang="scss">
+@import "./assets/styles.scss";
 </style>
