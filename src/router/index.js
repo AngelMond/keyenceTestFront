@@ -2,8 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router';
 
 
 const routes = [
-  {path: '/', component: () => import('../views/MainContentView.vue')},
+  {path: '/', component: () => import('../views/HomepageView.vue')},
   {path: '/login', component: () => import('../components/LoginForm.vue')},
+  // {path: '/', component: () => import('../components/Signup.vue')},
   
   {path: '/:catchAll(.*)',component: () => import('../views/NotFound.vue')},
 ]

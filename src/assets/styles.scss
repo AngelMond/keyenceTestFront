@@ -1,3 +1,6 @@
+$color-red: #e60012;
+
+// General styles
 body,
 #app{
     min-height: 100vh !important;
@@ -9,8 +12,7 @@ a{
 }
 
 .main-content{
-    min-height: 100vh;
-
+    min-height: 75vh;
 }
 
 .container{
@@ -19,10 +21,28 @@ a{
     margin-right: auto !important;
 }
 
+
+// Text hover styles
+.text-hover-red:hover{
+    color: $color-red !important;
+}
+
+
+// Margins
+.mt-100{
+    margin-top: 100px !important;
+}
+
+
+// Header styles
 .header{
+    .nav-link{
+        font-size: 18px;
+    }
+
     .nav-link:hover,
     .active{
-        color: #e60012 !important;
+        color: $color-red !important;
         cursor: pointer !important;
     }
 
@@ -30,9 +50,4 @@ a{
         width: 243px;
         height: 60px;
     }
-}
-
-.text-hover-red:hover{
-    color: #e60012 !important;
-
 }

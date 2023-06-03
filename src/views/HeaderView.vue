@@ -16,11 +16,11 @@
                             </li>
                             <li class="d-inline ma-1 ma-sm-3 ma-md-4 text-body-xs-2 nav-link">
                                 <router-link to="/login" active-class="active"
-                                    class="text-grey-darken-1">Login</router-link>
+                                    class="text-grey-darken-1">Log in</router-link>
                             </li>
                             <li class="d-inline ma-1 ma-sm-3 ma-md-4 text-body-xs-2 nav-link">
                                 <router-link to="/signup" active-class="active"
-                                    class="text-grey-darken-1">SignUp</router-link>
+                                    class="text-grey-darken-1">Sign Up</router-link>
                             </li>
                         </ul>
                     </nav>
