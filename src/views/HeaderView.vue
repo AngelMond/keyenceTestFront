@@ -46,7 +46,7 @@
                         </template>
                         <v-list>
                             <v-list-item v-for="(item, i) in items" :key="i">
-                                    <router-link class="text-grey-darken-1" :to="item.path">{{ item.title }}</router-link>
+                                    <router-link class="text-grey-darken-1 text-hover-red" :to="item.path">{{ item.title }}</router-link>
                             </v-list-item>
                         </v-list>
                     </v-menu>
