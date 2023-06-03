@@ -9,14 +9,7 @@
                         </v-col>
                         <v-col cols="10">
                             <p class="text-center text-grey">Sign up if you dont have any account</p>
-                            <p class="text-center text-primary">Already have an account?
-                                <span>
-                                    <router-link to="/login" active-class="active" style="text-decoration: underline;"
-                                        class="text-grey-darken-1 text-hover-red">
-                                        Log in
-                                    </router-link>
-                                </span>
-                            </p>
+
                         </v-col>
                     </v-row>
                     <v-container>
@@ -27,11 +20,21 @@
                                     <v-text-field v-model="email" label="Email" required></v-text-field>
                                     <v-text-field v-model="password" label="Password" required
                                         type="password"></v-text-field>
-                                    <v-btn class="btn" type="submit">Continue</v-btn>
+                                    <v-row class="justify-center pe-3 py-2">
+                                        <v-btn class="btn" type="submit">Continue</v-btn>
+                                    </v-row>
                                 </form>
                             </v-card-text>
                         </v-card>
                     </v-container>
+                    <p class="text-center text-primary">Already have an account?
+                        <span>
+                            <router-link to="/login" active-class="active" style="text-decoration: underline;"
+                                class="text-grey-darken-1 text-hover-red">
+                                Log in
+                            </router-link>
+                        </span>
+                    </p>
                 </v-card>
             </v-col>
         </v-row>
