@@ -9,7 +9,7 @@
             <v-col cols="10" sm="8" md="6" lg="3" xl="3">
                 <v-card class="rounded-lg pa-3">
                     <v-row justify="center">
-                        <v-col cols="6" class="justify-center">
+                        <v-col cols="12" class="justify-center">
                             <h1 class="text-center text-my-red">Welcome</h1>
                         </v-col>
                         <v-col cols="10">
@@ -26,7 +26,7 @@
                                     <v-text-field v-model="password" label="Password" required
                                         type="password"></v-text-field>
                                     <p v-if="hasExistingUser" class="text-red">User already exists</p>
-                                    <v-row class="justify-center pe-3 py-2">
+                                    <v-row class="justify-center pe-3 py-2 mt-2">
                                         <v-btn class="btn" type="submit">Continue</v-btn>
                                     </v-row>
                                 </form>
