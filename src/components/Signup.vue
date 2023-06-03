@@ -5,11 +5,11 @@
                 <v-card class="rounded-lg pa-3">
                     <v-row justify="center">
                         <v-col cols="6" class="justify-center">
-                            <h1 class="text-center">Welcome</h1>
+                            <h1 class="text-center text-my-red">Welcome</h1>
                         </v-col>
                         <v-col cols="10">
-                            <p class="text-center">Sign up if you dont have any account</p>
-                            <p class="text-center">Already have an account?
+                            <p class="text-center text-grey">Sign up if you dont have any account</p>
+                            <p class="text-center text-primary">Already have an account?
                                 <span>
                                     <router-link to="/login" active-class="active" style="text-decoration: underline;"
                                         class="text-grey-darken-1 text-hover-red">
