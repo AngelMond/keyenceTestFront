@@ -1,10 +1,32 @@
-$font-orange: orange;
-$font-blue: blue;
-
-.text-orange{
-    color: $font-orange !important;
+body,
+#app{
+    min-height: 100vh !important;
 }
 
-.text-blue{
-    color: $font-blue !important;
+a{
+    color: none;
+    text-decoration: none;
+}
+
+.main-content{
+    min-height: 100%;
+}
+
+.container{
+    max-width: 1200px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.header{
+    .nav-link:hover,
+    .active{
+        color: #e60012 !important;
+        cursor: pointer !important;
+    }
+
+    #logo{
+        width: 243px;
+        height: 60px;
+    }
 }
