@@ -29,31 +29,34 @@
         </div>
     </header>
     <!-- Header for mobile devices -->
-    <v-app-bar :elevation="1" class="d-block d-sm-none px-2" rounded>
-        <div class="w-100 d-flex justify-space-between align-end">
-            <div class="">
-                <router-link active-class="active" to="/">
-                    <img id="logo" style="width: 156px; height: 46px;" :src="logo" alt="" />
-                </router-link>
-            </div>
-            <div class="navbar-container">
-                <div class="text-center">
-                    <v-menu transition="slide-y-transition">
-                        <template v-slot:activator="{ props }">
-                            <v-btn color="" v-bind="props">
-                                Menu
-                            </v-btn>
-                        </template>
-                        <v-list>
-                            <v-list-item v-for="(item, i) in items" :key="i">
-                                    <router-link class="text-grey-darken-1 text-hover-red" :to="item.path">{{ item.title }}</router-link>
-                            </v-list-item>
-                        </v-list>
-                    </v-menu>
+    <v-top-navigation>
+        <v-app-bar :elevation="1" class="d-block d-sm-none px-2" rounded>
+            <div class="w-100 d-flex justify-space-between align-end">
+                <div class="">
+                    <router-link active-class="active" to="/">
+                        <img id="logo" style="width: 156px; height: 46px;" :src="logo" alt="" />
+                    </router-link>
+                </div>
+                <div class="navbar-container">
+                    <div class="text-center">
+                        <v-menu transition="slide-y-transition">
+                            <template v-slot:activator="{ props }">
+                                <v-btn color="" v-bind="props">
+                                    Menu
+                                </v-btn>
+                            </template>
+                            <v-list>
+                                <v-list-item v-for="(item, i) in items" :key="i">
+                                    <router-link class="text-grey-darken-1 text-hover-red" :to="item.path">{{ item.title
+                                    }}</router-link>
+                                </v-list-item>
+                            </v-list>
+                        </v-menu>
+                    </div>
                 </div>
             </div>
-        </div>
-    </v-app-bar>
+        </v-app-bar>
+    </v-top-navigation>
 </template>
 
 
