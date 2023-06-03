@@ -1,5 +1,5 @@
 <template>
     <main>
-        <p>main tag</p>
+        <p class="text-indigo">main tag</p>
     </main>
 </template>
