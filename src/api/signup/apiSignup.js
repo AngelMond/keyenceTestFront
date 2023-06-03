@@ -9,6 +9,11 @@ export async function apiSignup(obj) {
         })
         return response;
       } catch (error) {
-        return error
+        const failed = {
+            error,
+            serverMessage: 'Server not available',
+            isServerAvailable: false,
+        }
+        return failed;
       }
 }
