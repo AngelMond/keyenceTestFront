@@ -116,18 +116,18 @@ export default {
                 const response = await apiSignup(data);
                 //stop loading
                 this.overlay = false;
-                console.log(response)
+                // console.log(response)
 
                 //If server is not receiving requests
                 if (response.isServerAvailable === false) {
-                    console.log('Server not available');
+                    // console.log('Server not available');
                     this.modalBody = response.serverMessage;
                     this.isErrorServer = true;
                     return;
                 } 
 
                 if (response.data.isSuccessful) {
-                    console.log("User registered")
+                    // console.log("User registered")
                     this.isSignupSuccessful = true;
                     this.dialogVisible = true;
                     return;
@@ -135,7 +135,7 @@ export default {
 
                 //If user already exists
                 if(response.data.data.isSuccessful === false){
-                    console.log("User exists")
+                    // console.log("User exists")
                     this.modalBody = response.data.data.message;
                     this.hasExistingUser = true;
                     return;
