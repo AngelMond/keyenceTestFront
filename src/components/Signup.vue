@@ -17,7 +17,7 @@
                             <v-card-text>
                                 <form @submit="submitForm">
                                     <v-text-field v-model="username" label="Username" required></v-text-field>
-                                    <v-text-field v-model="email" label="Email" required></v-text-field>
+                                    <!-- <v-text-field v-model="email" label="Email" required></v-text-field> -->
                                     <v-text-field v-model="password" label="Password" required
                                         type="password"></v-text-field>
                                     <v-row class="justify-center pe-3 py-2">
@@ -42,17 +42,27 @@
 </template>
   
 <script>
+import {apiSignup} from "../api/signup/apiSignup";
 export default {
     data() {
         return {
             username: '',
-            email: '',
-            password: ''
+            // email: '',
+            password: '',
         }
     },
     methods: {
-        submitForm(e) {
+        async submitForm(e) {
             e.preventDefault();
+            const data = {
+                username: this.username,
+                // email: this.email,
+                password: this.password,
+            }
+            console.log(data);
+
+            const response = await apiSignup(data);
+            console.log(response);
         }
     }
 }
