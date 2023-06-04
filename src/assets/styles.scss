@@ -2,55 +2,57 @@ $color-red: #e60012;
 
 // General styles
 body,
-#app{
+#app {
     min-height: 100vh !important;
 }
 
-a{
+a {
     color: none;
     text-decoration: none;
 }
 
-.main-content{
+.main-content {
     min-height: 75vh;
 }
 
-.container{
-    max-width: 1200px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
+
+.container {
+    // max-width: 1200px !important;
+    // margin-left: auto !important;
+    // margin-right: auto !important;
+    min-height: 84vh;
 }
 
 
 // Text hover styles
-.text-hover-red:hover{
+.text-hover-red:hover {
     color: $color-red !important;
 }
 
-.text-my-red{
+.text-my-red {
     color: $color-red !important;
 }
 
 
 // Margins
-.mt-100{
+.mt-100 {
     margin-top: 100px !important;
 }
 
 
 // Header styles
-.header{
-    .nav-link{
+.header {
+    .nav-link {
         font-size: 18px;
     }
 
     .nav-link:hover,
-    .active{
+    .active {
         color: $color-red !important;
         cursor: pointer !important;
     }
 
-    #logo{
+    #logo {
         width: 243px;
         height: 60px;
     }
