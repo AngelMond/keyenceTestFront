@@ -1,9 +1,10 @@
 import { apiGlobal } from '../apiGlobal';
 
-export async function apiDeleteRow() {
+export async function apiDeleteRow(obj) {
       try {
         const response = await apiGlobal(`/files/loadfile`, {
           method:"delete",
+          data: obj,
         })
         return response;
       } catch (error) {
