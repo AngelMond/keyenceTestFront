@@ -95,8 +95,10 @@ export default {
             //Validates if theres an error in server
             isErrorServer: false,
 
-            //modal
+            //modal when signing up 
             dialogVisible: false,
+
+            //modal to show error messages
             modalTitle: "Signup successful",
             modalBody: "Server not available"
         }
