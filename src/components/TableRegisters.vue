@@ -98,6 +98,8 @@ export default {
             hasRegisters: false,
             // registers: [{}],
 
+            overlay: false,
+
             //Modal to show server error message
             isErrorServer: false,
             modalTitle: "Signup successful",
@@ -146,11 +148,16 @@ export default {
         async saveUpdateRow(record) {
             // Enviar la información a la base de datos o realizar alguna otra acción
             const row = JSON.parse(JSON.stringify(record));
-            console.log('Save', row);
+            // console.log('Save', row);
 
+            const obj = { ...row};
+            console.log(obj)
 
+            
+
+            
             this.overlay = true;
-            const response = await apiUpdateRow(row);
+            const response = await apiUpdateRow(obj);
             this.overlay = false;
             console.log(response)
 
@@ -162,9 +169,8 @@ export default {
                 this.isErrorServer = true;
                 return;
             }
-
-
         },
+
         async deleteRow(record) {
             //Find and deletes the selected row
             const row = JSON.parse(JSON.stringify(record));
