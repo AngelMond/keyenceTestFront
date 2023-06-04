@@ -102,7 +102,7 @@ export default {
           window.sessionStorage.setItem("user", user);
           window.sessionStorage.setItem("userId", userId);
           window.sessionStorage.setItem("token", token);
-          this.$router.push('/file');
+          this.$router.push('/readFile');
         }
 
       } catch (error) {
