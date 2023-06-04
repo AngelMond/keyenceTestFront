@@ -4,7 +4,7 @@
     </main>
 </template>
 <script>
-import Signup from '../components/Signup.vue';
+import Signup from '../components/SignupForm.vue';
 export default {
     components: {
         Signup

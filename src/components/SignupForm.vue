@@ -148,7 +148,7 @@ export default {
 
         closeDialog() {
             this.dialogVisible = false;
-            this.$router.push('/login')
+            this.$router.push('/login');
         }
     }
 }
