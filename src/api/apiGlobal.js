@@ -7,36 +7,30 @@ export const apiGlobal = axios.create({
     },
 });
 
-// //instancia principal para todas las apis menos las bitacoras
-// instance.interceptors.request.use(function (config) {
-//     const token = window.sessionStorage.getItem('accessToken');
-//     if (token) {
-//       config.headers.Authorization = `Bearer ${token}`;
-//     } else {
-//       ////window.location.href = '/login'
-//     }
-//     return config;
-//   });
-  
-//   instance.interceptors.response.use(
-//     (response) => response,
-//     (err) => {
-//       //console.log(err)
-//       if (!err.response) {
-//         // console.log("entra ala error")
-//         return Promise.reject({
-//           status: 999,
-//           timestamp: new Date(),
-//           message: "Unexpected error",
-//           error: 1
-//         });
-//       }
-  
-//       return Promise.reject({
-//         message: "Error",
-//         error: err.response.status
-//       }
-//       );
-//     }
-//   );
-  
+//Set token to headers to access to protected backend APIs
+apiGlobal.interceptors.request.use(function (config) {
+    const token = window.sessionStorage.getItem('token');
+    config.headers.Authorization = token;
+    return config;
+});
+
+//Handle error responses to backend APIs
+apiGlobal.interceptors.response.use(
+    (response) => response,
+    (err) => {
+
+        if (!err.response) {
+            return Promise.reject({
+                status: 999,
+                timestamp: new Date(),
+                message: "Unexpected error",
+                error: 1
+            });
+        }
+        return Promise.reject({
+            message: "Error",
+            error: err.response.status
+        }
+        );
+    }
+);
