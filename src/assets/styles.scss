@@ -15,12 +15,20 @@ a {
     min-height: 75vh;
 }
 
-
 .container {
     // max-width: 1200px !important;
     // margin-left: auto !important;
     // margin-right: auto !important;
     min-height: 84vh;
+}
+
+.table-input{
+    outline: 1px dashed #dad7d7 !important;
+    padding-left: 5px !important;
+}
+
+.text-italic{
+    font-style: italic !important;
 }
 
 
