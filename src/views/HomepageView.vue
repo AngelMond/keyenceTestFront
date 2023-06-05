@@ -23,7 +23,6 @@ export default {
             //console.log(token);
             if (token) {
                 this.isSessionToken = true;
-                window.location.reload();
                 this.$router.push('/readFile');
             } else {
                 this.isSessionToken = false;
