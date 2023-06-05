@@ -17,7 +17,7 @@ COPY . .
 RUN npm run build
 
 # Expone el puerto 80 para que la aplicación sea accesible desde el exterior
-EXPOSE 80
+EXPOSE 3000
 
 # Define el comando que se ejecutará al iniciar el contenedor
-CMD [ "npm", "run", "serve" ]
+CMD [ "npm", "run", "build" ]
