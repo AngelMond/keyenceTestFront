@@ -1,8 +1,7 @@
 import axios from "axios";
 
 export const apiGlobal = axios.create({
-    // baseURL: "http://192.168.100.4:8080/api/",
-    baseURL: "https://keyencetest-6loas22saa-uw.a.run.app/api/",
+    baseURL: "http://192.168.100.4:8080/api/",
     
     headers: {
         "Content-Type": "application/json",
