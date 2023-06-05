@@ -20,4 +20,4 @@ RUN npm run build
 EXPOSE 3000
 
 # Define el comando que se ejecutará al iniciar el contenedor
-CMD [ "npm", "run", "build" ]
+CMD [ "npm", "run", "dev" ]
