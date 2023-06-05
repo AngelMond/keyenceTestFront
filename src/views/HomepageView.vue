@@ -1,14 +1,15 @@
 <template>
-    <main class="main-content">
+    <main class="main-content-home">
         <div v-if="!isSessionToken">
             <Signup></Signup>
         </div>
-        <div v-else>
+        <div v-else class="mt-14">
             <h3 class="py-3 text-center text-grey-darken-1">
-                Upload a file! 
+                Upload a file!
                 <router-link active-class="active" class=" text-red-darken-2 " to="/readFile">
                     Here!
-                </router-link></h3>
+                </router-link>
+            </h3>
         </div>
     </main>
 </template>
