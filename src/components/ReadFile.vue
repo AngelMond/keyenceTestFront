@@ -56,7 +56,7 @@ export default {
     },
     methods: {
         readFile() {
-            console.log(this.selectedFile)
+            //console.log(this.selectedFile)
             // const file = 'ruta/al/archivo.xlsx'; // Ruta a tu archivo XLSX
 
             // // Leer el archivo XLSX utilizando fs
@@ -67,7 +67,7 @@ export default {
             const sheetName = workbook.SheetNames[0];
             const worksheet = workbook.Sheets[sheetName];
             const jsonData = XLSX.utils.sheet_to_json(worksheet, { raw: true });
-            console.log(jsonData); // Hacer algo con los datos JSON
+            //console.log(jsonData); // Hacer algo con los datos JSON
 
         },
         handleFileUpload(event) {
@@ -77,17 +77,17 @@ export default {
             reader.onload = (e) => {
                 const data = new Uint8Array(e.target.result);
                 const workbook = XLSX.read(data, { type: 'array' });
-                // console.log(workbook)
+                // //console.log(workbook)
 
                 // Aquí llamamos a una función que convierte el archivo a JSON
                 const jsonData = this.xlsxToJson(workbook);
 
                 // Aquí puedes hacer lo que necesites con el JSON resultante
-                //console.log(jsonData.Sheet1);
+                ////console.log(jsonData.Sheet1);
 
                 //Create new object to send to DB
                 const newJson = jsonData.Sheet1.map((el) => {
-                    //console.log(el["User Name"])
+                    ////console.log(el["User Name"])
                     let username = el["User Name"];
                     let userId = el["User ID"];
                     let punchIn = el["Punch In"];
@@ -103,7 +103,7 @@ export default {
                     }
                 });
 
-                //console.log(newJson)
+                ////console.log(newJson)
                 this.excelRows = newJson;
             };
 
@@ -114,20 +114,20 @@ export default {
             workbook.SheetNames.forEach((sheetName) => {
                 const worksheet = workbook.Sheets[sheetName];
                 // const worksheetClean = worksheet.shift();
-                //console.log(worksheet)
+                ////console.log(worksheet)
                 const array = Object.values(worksheet).map(obj => obj);
-                //console.log(array)
+                ////console.log(array)
                 //Take off the first element of the array wich is not a valid object to iterate
                 const cleanArray = array.shift();
-                //console.log(worksheet)
+                ////console.log(worksheet)
 
                 //Check attribute v of array and if "V" is a number replace it with the original data in "W" attrinbute
                 const newArr = array.map((el, ix) => {
-                    // console.log(el.v)
+                    // //console.log(el.v)
                     if (typeof (el.v) === "number") {
-                        // console.log(el.v)
-                        // console.log(el.w)
-                        // console.log('*******')
+                        // //console.log(el.v)
+                        // //console.log(el.w)
+                        // //console.log('*******')
                         el.v = el.w;
                     }
                 });
@@ -146,18 +146,18 @@ export default {
 
                 const response = await apiAddFile(file);
                 this.overlay = false;
-                console.log(response)
+                //console.log(response)
 
                 //If server is not receiving requests
                 if (response.isServerAvailable === false) {
-                    // console.log('Server not available');
+                    // //console.log('Server not available');
                     this.modalBody = response.serverMessage;
                     this.isErrorServer = true;
                     return;
                 }
 
                 if (response.data.isSuccessful) {
-                    console.log('se registro');
+                    //console.log('se registro');
                     
                     this.$router.push('/tableRegisters');
 

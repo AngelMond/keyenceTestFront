@@ -79,18 +79,18 @@ export default {
           username: this.username,
           password: this.password,
         }
-        console.log(data);
+        //console.log(data);
 
         //loading
         this.overlay = true;
         const response = await apiLogin(data);
         //stop loading
         this.overlay = false;
-        console.log(response)
+        //console.log(response)
 
         //If server is not receiving requests
         if (response.isServerAvailable === false) {
-          // console.log('Server not available');
+          // //console.log('Server not available');
           this.modalBody = response.serverMessage;
           this.isErrorServer = true;
           return;
@@ -117,7 +117,7 @@ export default {
 
     handleGetToken(){
       window.sessionStorage.token;
-      console.log()
+      //console.log()
     }
   }
 }

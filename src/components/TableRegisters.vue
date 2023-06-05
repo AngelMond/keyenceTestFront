@@ -115,12 +115,12 @@ export default {
                 this.overlay = true;
                 const response = await apiGetAllRegisters();
                 this.overlay = false;
-                console.log(response);
+                //console.log(response);
 
 
                 //If server is not receiving requests
                 if (response.isServerAvailable === false) {
-                    console.log('Server not available');
+                    //console.log('Server not available');
                     this.modalBody = response.serverMessage;
                     this.isErrorServer = true;
                     return;
@@ -129,19 +129,19 @@ export default {
                 if (response.data.isSuccessful) {
 
                     if (response.data.allRegisters.length === 0) {
-                        console.log('Without registers')
+                        //console.log('Without registers')
                         this.hasRegisters = false;
 
                     } else {
                         this.hasRegisters = true;
                         // this.registers = response.data.allRegisters;
                         this.records = response.data.allRegisters;
-                        console.log(response.data.allRegisters)
+                        //console.log(response.data.allRegisters)
                     }
                 }
 
             } catch (error) {
-                console.log(error);
+                //console.log(error);
             }
         },
         agregarItem() {
@@ -151,20 +151,20 @@ export default {
         async saveUpdateRow(record) {
             // Enviar la información a la base de datos o realizar alguna otra acción
             const row = JSON.parse(JSON.stringify(record));
-            console.log(row)
+            //console.log(row)
 
             //Check if theres a register already 
             if (row._id) {
-                console.log('ya tiene un registro')
+                //console.log('ya tiene un registro')
 
                 this.overlay = true;
                 const response = await apiUpdateRow(row);
                 this.overlay = false;
-                console.log(response)
+                //console.log(response)
 
                 //If server is not receiving requests
                 if (response.isServerAvailable === false) {
-                    console.log('Server not available');
+                    //console.log('Server not available');
                     this.modalBody = response.serverMessage;
                     this.isErrorServer = true;
                     return;
@@ -182,17 +182,17 @@ export default {
 
                 //If therse no register, creates a new one
             } else {
-                console.log('crear un nuevo registro')
+                //console.log('crear un nuevo registro')
 
 
                 this.overlay = true;
                 const response = await apiAddFile(row);
                 this.overlay = false;
-                console.log(response)
+                //console.log(response)
 
                 //If server is not receiving requests
                 if (response.isServerAvailable === false) {
-                    console.log('Server not available');
+                    //console.log('Server not available');
                     this.modalBody = response.serverMessage;
                     this.isErrorServer = true;
                     return;
@@ -213,17 +213,17 @@ export default {
         async deleteRow(record) {
             //Find and deletes the selected row
             const row = JSON.parse(JSON.stringify(record));
-            console.log('Delete', row);
+            //console.log('Delete', row);
 
             this.overlay = true;
             const response = await apiDeleteRow(row);
             this.overlay = false;
-            console.log(response)
+            //console.log(response)
 
 
             //If server is not receiving requests
             if (response.isServerAvailable === false) {
-                console.log('Server not available');
+                //console.log('Server not available');
                 this.modalBody = response.serverMessage;
                 this.isErrorServer = true;
                 return;

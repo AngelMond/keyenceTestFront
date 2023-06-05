@@ -123,7 +123,7 @@ export default {
     methods: {
         handleGetToken() {
             const token = window.sessionStorage.token;
-            console.log(token);
+            //console.log(token);
             if (token) {
                 this.isSessionToken = true;
             } else {

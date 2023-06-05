@@ -1,7 +1,7 @@
 import { apiGlobal } from '../apiGlobal';
 
 export async function apiAddFile (obj) {
-    console.log("API loadfile")
+    //console.log("API loadfile")
       try {
         const response = await apiGlobal(`/files/loadfile`, {
           method:"post",
