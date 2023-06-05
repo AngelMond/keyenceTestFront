@@ -5,9 +5,9 @@
         </div>
         <div v-else class="mt-14">
             <h3 class="py-3 text-center text-grey-darken-1">
-                Upload a file!
-                <router-link active-class="active" class=" text-red-darken-2 " to="/readFile">
-                    Here!
+                Upload a file
+                <router-link active-class="active" class="text-decoration-underline text-red-darken-2" to="/readFile">
+                    here!
                 </router-link>
             </h3>
         </div>

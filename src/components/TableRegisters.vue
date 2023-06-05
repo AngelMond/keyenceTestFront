@@ -63,7 +63,7 @@
                     <p class="text-center">
                         To create a table of registers go to
                         <router-link to="/readFile" class="text-red-darken-2 text-decoration-underline">
-                            Upload file
+                            Load file
                         </router-link>
                     </p>
                 </v-card>
