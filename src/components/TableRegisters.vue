@@ -48,10 +48,10 @@
                         </tbody>
                     </v-table>
                     <v-row justify="between" class="ma-2">
-                        <v-col>
-                            <p class="sencundary text-grey-darken-1">To edit a row click over the value</p>
+                        <v-col cols="12" sm="6">
+                            <p class="sencundary text-grey-darken-1">To edit a row click over the value or add a new row</p>
                         </v-col>
-                        <v-col>
+                        <v-col cols="12" sm="6">
                             <v-btn class="sencundary" @click="agregarItem">ADD</v-btn>
                         </v-col>
                     </v-row>
@@ -79,6 +79,9 @@
 import { apiGetAllRegisters } from '../api/xlsxFiles/apiGetAllRegisters';
 import { apiUpdateRow } from '../api/xlsxFiles/apiUpdateRow';
 import { apiDeleteRow } from '../api/xlsxFiles/apiDeleteRow';
+import { apiAddFile } from '../api/xlsxFiles/apiAddFile';
+
+
 
 
 import ModalComponent from "@/components/modal/ModalComponent.vue";
@@ -148,26 +151,62 @@ export default {
         async saveUpdateRow(record) {
             // Enviar la información a la base de datos o realizar alguna otra acción
             const row = JSON.parse(JSON.stringify(record));
-            // console.log('Save', row);
+            console.log(row)
 
-            const obj = { ...row};
-            console.log(obj)
+            //Check if theres a register already 
+            if (row._id) {
+                console.log('ya tiene un registro')
 
-            
+                this.overlay = true;
+                const response = await apiUpdateRow(row);
+                this.overlay = false;
+                console.log(response)
 
-            
-            this.overlay = true;
-            const response = await apiUpdateRow(obj);
-            this.overlay = false;
-            console.log(response)
+                //If server is not receiving requests
+                if (response.isServerAvailable === false) {
+                    console.log('Server not available');
+                    this.modalBody = response.serverMessage;
+                    this.isErrorServer = true;
+                    return;
+                }
+
+                //When updated is successful return all registers
+                if (response.data.isSuccessful) {
+                    this.records = response.data.updatedRegisters;
+
+                    //Modal shows error message 
+                } else {
+                    this.modalBody = "Unexpected error, please try again";
+                    this.isErrorServer = true;
+                }
+
+                //If therse no register, creates a new one
+            } else {
+                console.log('crear un nuevo registro')
 
 
-            //If server is not receiving requests
-            if (response.isServerAvailable === false) {
-                console.log('Server not available');
-                this.modalBody = response.serverMessage;
-                this.isErrorServer = true;
-                return;
+                this.overlay = true;
+                const response = await apiAddFile(row);
+                this.overlay = false;
+                console.log(response)
+
+                //If server is not receiving requests
+                if (response.isServerAvailable === false) {
+                    console.log('Server not available');
+                    this.modalBody = response.serverMessage;
+                    this.isErrorServer = true;
+                    return;
+                }
+
+                //When create register is successful return all registers
+                if (response.data.isSuccessful) {
+                    this.records = response.data.allRegisters;
+
+                    //Modal shows error message 
+                } else {
+                    this.modalBody = "Unexpected error, please try again";
+                    this.isErrorServer = true;
+                }
             }
         },
 
@@ -189,10 +228,17 @@ export default {
                 this.isErrorServer = true;
                 return;
             }
-            // const index = this.records.indexOf(record);
-            // if (index > -1) {
-            //     this.records.splice(index, 1);
-            // }
+
+            if (response.data.isSuccessful) {
+                const index = this.records.indexOf(record);
+                if (index > -1) {
+                    this.records.splice(index, 1);
+                }
+
+            } else {
+                this.modalBody = "Unexpected error, please try again";
+                this.isErrorServer = true;
+            }
         },
     },
 };
