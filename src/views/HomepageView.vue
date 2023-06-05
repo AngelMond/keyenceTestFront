@@ -1,6 +1,15 @@
 <template>
     <main class="main-content">
-        <Signup></Signup>
+        <div v-if="!isSessionToken">
+            <Signup></Signup>
+        </div>
+        <div v-else>
+            <h3 class="py-3 text-center text-grey-darken-1">
+                Upload a file! 
+                <router-link active-class="active" class=" text-red-darken-2 " to="/readFile">
+                    Here!
+                </router-link></h3>
+        </div>
     </main>
 </template>
 <script>
@@ -23,7 +32,7 @@ export default {
             //console.log(token);
             if (token) {
                 this.isSessionToken = true;
-                this.$router.push('/readFile');
+                // this.$router.push('/readFile');
             } else {
                 this.isSessionToken = false;
             }
