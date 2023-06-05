@@ -33,7 +33,6 @@
     </v-row>
 
     
-
     <!-- Modal shows error server -->
     <ModalComponent v-if="isErrorServer || hasExistingUser" :modal-title="'System message'" :modal-body="modalBody">
     </ModalComponent>
@@ -47,6 +46,9 @@ export default {
   components: {
     ModalComponent
   },
+  mounted() {
+        this.handleGetToken();
+    },
   data() {
     return {
       //form inputs
@@ -65,6 +67,8 @@ export default {
 
       //Check username and password
       areCredentialsIncorrect: false,
+
+      isSessionToken: false,
     }
   },
   methods: {
@@ -102,12 +106,18 @@ export default {
           window.sessionStorage.setItem("user", user);
           window.sessionStorage.setItem("userId", userId);
           window.sessionStorage.setItem("token", token);
-          this.$router.push('/readFile');
+          // this.$router.push('/readFile');
+          window.location.replace('/readFile')
         }
 
       } catch (error) {
         console.error(error);
       }
+    },
+
+    handleGetToken(){
+      window.sessionStorage.token;
+      console.log()
     }
   }
 }

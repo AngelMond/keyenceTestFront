@@ -10,17 +10,32 @@
                 </div>
                 <div class="navbar-container">
                     <nav class="navbar">
-                        <ul>
+                        <!-- Nav option when user is log out -->
+                        <ul v-if="!isSessionToken">
                             <li class="d-inline ma-1 ma-sm-3 ma-md-4 text-body-xs-2 nav-link">
                                 <router-link active-class="active" class="text-grey-darken-1" to="/">Home</router-link>
                             </li>
                             <li class="d-inline ma-1 ma-sm-3 ma-md-4 text-body-xs-2 nav-link">
-                                <router-link to="/login" active-class="active"
-                                    class="text-grey-darken-1">Log in</router-link>
+                                <router-link to="/login" active-class="active" class="text-grey-darken-1">Log
+                                    in</router-link>
+                            </li>
+                        </ul>
+                        <!-- Nav option when user is login -->
+                        <ul v-if="isSessionToken">
+                            <li class="d-inline ma-1 ma-sm-3 ma-md-4 text-body-xs-2 nav-link">
+                                <router-link active-class="active" class="text-grey-darken-1" to="/readFile">
+                                    Load file
+                                </router-link>
                             </li>
                             <li class="d-inline ma-1 ma-sm-3 ma-md-4 text-body-xs-2 nav-link">
-                                <router-link to="/signup" active-class="active"
-                                    class="text-grey-darken-1">Sign Up</router-link>
+                                <router-link to="/tableRegisters" active-class="active" class="text-grey-darken-1">
+                                    Registers
+                                </router-link>
+                            </li>
+                            <li class="d-inline ma-1 ma-sm-3 ma-md-4 text-body-xs-2 nav-link">
+                                <a active-class="active" @click="handleLogOut" class="text-grey-darken-1">
+                                    Log Out
+                                </a>
                             </li>
                         </ul>
                     </nav>
@@ -46,9 +61,37 @@
                                 </v-btn>
                             </template>
                             <v-list>
-                                <v-list-item v-for="(item, i) in items" :key="i">
-                                    <router-link class="text-grey-darken-1 text-hover-red" :to="item.path">{{ item.title
-                                    }}</router-link>
+                                <v-list-item>
+                                    <!-- Nav option when user is log out -->
+                                    <ul v-if="!isSessionToken">
+                                        <li class="text-grey-darken-1 text-hover-red ">
+                                            <router-link active-class="active" class="text-grey-darken-1"
+                                                to="/">Home</router-link>
+                                        </li>
+                                        <li class="text-grey-darken-1 text-hover-red ">
+                                            <router-link to="/login" active-class="active" class="text-grey-darken-1">Log
+                                                in</router-link>
+                                        </li>
+                                    </ul>
+                                    <!-- Nav option when user is login -->
+                                    <ul v-if="isSessionToken">
+                                        <li class="text-grey-darken-1 text-hover-red ">
+                                            <router-link active-class="active" class="text-grey-darken-1" to="/readFile">
+                                                Load file
+                                            </router-link>
+                                        </li>
+                                        <li class="text-grey-darken-1 text-hover-red ">
+                                            <router-link to="/tableRegisters" active-class="active"
+                                                class="text-grey-darken-1">
+                                                Registers
+                                            </router-link>
+                                        </li>
+                                        <li class="text-grey-darken-1 text-hover-red ">
+                                            <a active-class="active" @click="handleLogOut" class="text-grey-darken-1">
+                                                Log Out
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </v-list-item>
                             </v-list>
                         </v-menu>
@@ -63,6 +106,9 @@
 <script>
 import keyence from '@/assets/logo/keyence.jpeg';
 export default {
+    mounted() {
+        this.handleGetToken();
+    },
     data() {
         return {
             logo: keyence,
@@ -71,8 +117,25 @@ export default {
                 { title: 'Login', path: '/login' },
                 { title: 'SignUp', path: '/signup' },
             ],
-
+            isSessionToken: false,
         };
+    },
+    methods: {
+        handleGetToken() {
+            const token = window.sessionStorage.token;
+            console.log(token);
+            if (token) {
+                this.isSessionToken = true;
+            } else {
+                this.isSessionToken = false;
+            }
+        },
+
+        handleLogOut() {
+            this.isSessionToken = false;
+            window.sessionStorage.removeItem('token')
+            this.$router.push('/');
+        }
     }
 };
 </script>
