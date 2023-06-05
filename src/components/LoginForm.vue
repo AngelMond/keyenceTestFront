@@ -106,9 +106,7 @@ export default {
           window.sessionStorage.setItem("user", user);
           window.sessionStorage.setItem("userId", userId);
           window.sessionStorage.setItem("token", token);
-          // this.$router.push('/readFile');
-          next('/');
-          next('/readFile');
+          this.$router.push('/');
           // window.location.replace('/readFile')
         }
 

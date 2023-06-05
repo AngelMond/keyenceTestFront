@@ -8,6 +8,28 @@ import Signup from '../components/SignupForm.vue';
 export default {
     components: {
         Signup
+    },
+    mounted() {
+        this.handleGetToken();
+    },
+    data() {
+        return {
+            isSessionToken: false,
+        }
+    },
+    methods: {
+        handleGetToken() {
+            const token = window.sessionStorage.token;
+            //console.log(token);
+            if (token) {
+                this.isSessionToken = true;
+                window.location.reload();
+                this.$router.push('/readFile');
+            } else {
+                this.isSessionToken = false;
+            }
+        },
     }
+
 }
 </script>
